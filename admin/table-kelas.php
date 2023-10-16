@@ -28,16 +28,16 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
         </thead>
         <tbody>
          <?php  $no = 1;?> 
-         <?php foreach ($table_kelas as $tampil) : ?>
-
+         <?php foreach ($table_kelas as $row) : ?>
           <tr>
             <td><?php echo $no; ?></td>
-            <td><?php echo $tampil['nomor_kelas']; ?></td>
-            <td><?php echo $tampil['nama_kelas']; ?></td>
-            <td><?php echo $tampil['tingkat']; ?></td>
-            <td><?php echo $tampil['wali_kelas']; ?></td>
-            <td>
-              <a href="table-kelas-mipa3.php"><?php echo $tampil['jumlah_siswa']; ?></a>
+            <td><?php echo $row['nomor_kelas']; ?></td>
+            <td><?php echo $row['nama_kelas']; ?></td>
+            <td><?php echo $row['tingkat']; ?></td>
+            <td><?php echo $row['wali_kelas']; ?></td>
+            <td class="d-flex gap-4">
+              <a href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>"><?php echo $row['jumlah_siswa']; ?></a>
+              <a class="btn btn-primary btn-sm" href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
             </td>
           </tr>
           <?php $no++; ?>

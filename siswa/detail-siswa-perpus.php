@@ -59,7 +59,6 @@ if (isset($_POST['simpan'])) {
               <th>Judul</th>
               <th>Penerbit</th>
               <th>Status</th>
-
             </tr>
           </thead>
           <tbody>

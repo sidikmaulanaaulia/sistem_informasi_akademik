@@ -28,10 +28,10 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="index.php"
+                  href="table-kelas.php"
                   aria-expanded="false"
                   ><i class="mdi mdi-account-card-details"></i
-                  ><span class="hide-menu">Data SPP</span></a
+                  ><span class="hide-menu">Kelas</span></a
                 >              </li>
                  <?php } ?>
                 

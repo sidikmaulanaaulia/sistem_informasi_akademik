@@ -1,7 +1,9 @@
 <?php
 include 'kepala.php'; 
+$id_kelas = $_GET['id'];
 
-$table_kelas = query("SELECT * FROM tabel_kelas");
+$data_kelas =mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM tabel_kelas WHERE id_kelas='$id_kelas'"));
+$data_siswa = mysqli_query($conn,"SELECT nama_siswa,nisn FROM tabel_siswa WHERE id_kelas='$id_kelas'");
 ?>
 <div class="page-wrapper">
   <!-- ============================================================== -->
@@ -9,7 +11,9 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
   <!-- ============================================================== -->
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title text-center">TABLE KELAS MIPA 3</h5>
+      <h5 class="card-title text-center">TABLE KELAS <?php echo $data_kelas['nama_kelas']; ?><?php  ?></h5>
+      <h5 class="card-title text-center">Wali Kelas <?php echo $data_kelas['wali_kelas'];  ?></h5>
+      <a class="btn btn-primary " href="table-kelas.php">Kembali</a>
       <div class="table-responsive">
         <table
         id="zero_config"
@@ -18,16 +22,21 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
         <thead>
           <tr>
             <th>No</th>
-            <th>nis</th>
+            <th>Nisn</th>
             <th>Nama siswa</th>
-            <th>Tingkat</th>
-            
           </tr>
         </thead>
+          <?php $no = 1; ?>
         <tbody>
+          <?php foreach ($data_siswa as $row) : ?>
           <tr>
-            <td><h1>mucul data daftar siswa kelas MIPA 3</h1></td>
+            <td><?php echo $no; ?></td>
+            <td><?php echo $row['nisn']; ?></td>
+            <td><?php echo $row['nama_siswa']; ?></td>
+            
           </tr>
+          <?php $no++ ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
