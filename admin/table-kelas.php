@@ -2,6 +2,11 @@
 include 'kepala.php'; 
 
 $table_kelas = query("SELECT * FROM tabel_kelas");
+
+if (isset($_SESSION['pesan_sukses'])) {
+  $pesan_sukses = $_SESSION['pesan_sukses'];
+  unset($_SESSION['pesan_sukses']);
+}
 ?>
 <div class="page-wrapper">
   <!-- ============================================================== -->
@@ -10,7 +15,13 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-center">TABLE KELAS</h5>
-      <div class="table-responsive">
+      <a class="btn btn-primary text-white" href="tambah-table-kelas.php?>">Tambah</a>
+      <?php if (isset($pesan_sukses)): ?>
+        <div class="alert alert-success w-25 mt-3" role="alert">
+          <?php echo $pesan_sukses; ?>
+        </div>
+      <?php endif ?>
+      <div class="table-responsive mt-3">
         <table
         id="zero_config"
         class="table table-striped table-bordered"
@@ -41,8 +52,8 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
               <a class="btn btn-primary btn-sm" href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
             </td>
             <td>
-              <a class="btn btn-success text-white btn-sm" href="">Update</a>
-              <a class="btn btn-danger btn-sm" href="">Delete</a>
+              <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Delete</a>
+              <a class="btn btn-success btn-sm text-white" href="edit-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Update</a>
             </td>
           </tr>
           <?php $no++; ?>
