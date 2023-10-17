@@ -23,6 +23,7 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
             <th>Tingkat</th>
             <th>Wali Kelas</th>
             <th>Jumlah Siswa</th>
+            <th>Action</th>
             
           </tr>
         </thead>
@@ -38,6 +39,10 @@ $table_kelas = query("SELECT * FROM tabel_kelas");
             <td class="d-flex gap-4">
               <a href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>"><?php echo $row['jumlah_siswa']; ?></a>
               <a class="btn btn-primary btn-sm" href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
+            </td>
+            <td>
+              <a class="btn btn-success text-white btn-sm" href="">Update</a>
+              <a class="btn btn-danger btn-sm" href="">Delete</a>
             </td>
           </tr>
           <?php $no++; ?>
