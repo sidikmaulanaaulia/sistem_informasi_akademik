@@ -2,15 +2,13 @@
 include 'kepala.php'; 
 
 if (isset($_POST['simpan'])) {
-	$id_kelas = $_GET['id'];
 	$nomor_kelas = $_POST['nomor_kelas'];
 	$nama_kelas = $_POST['nama_kelas'];
 	$tingkat = $_POST['tingkat'];
 	$wali_kelas = $_POST['wali_kelas'];
-	$jumlah_siswa = $_POST['jumlah_siswa'];
 
-	$simpan_data_kelas = mysqli_query($conn,"INSERT INTO tabel_kelas (nomor_kelas,nama_kelas,tingkat,wali_kelas,jumlah_siswa)
-		VALUES('$nomor_kelas','$nama_kelas','$tingkat','$wali_kelas','$jumlah_siswa')");
+	$simpan_data_kelas = mysqli_query($conn,"INSERT INTO tabel_kelas (nomor_kelas,nama_kelas,tingkat,wali_kelas)
+		VALUES('$nomor_kelas','$nama_kelas','$tingkat','$wali_kelas')");
 
 	$pesan_sukses = "Data Berhasil Di Tambahkan";
 }
@@ -22,9 +20,9 @@ if (isset($_POST['simpan'])) {
 	<form action="" method="post">
 		<div class="container bg-white mt-2 p-3">
 			<h3 class="text-center">From Tambah Data Kelas</h3>
-			<a class="btn btn-primary" href="table-siswa.php">Kembali</a>
+			<a class="btn btn-primary" href="table-kelas.php">Kembali</a>
 			<?php if (isset($pesan_sukses)): ?>
-				<div class="alert alert-success w-25" role="alert">
+				<div class="alert alert-success w-25 mt-3" role="alert">
 					<?php echo $pesan_sukses; ?>
 				</div>
 			<?php endif ?>
@@ -45,10 +43,6 @@ if (isset($_POST['simpan'])) {
 					<div class="mb-3">
 						<label for="formGroupExampleInput" class="form-label">Wali kelas</label>
 						<input type="text" class="form-control form-control-sm " name="wali_kelas" id="formGroupExampleInput" placeholder="Wali Kelas" required>  
-					</div>
-					<div class="mb-3">
-						<label for="formGroupExampleInput" class="form-label">Jumlah Siswa	</label>
-						<input type="text" class="form-control form-control-sm " name="jumlah_siswa" id="formGroupExampleInput" placeholder="Jumlah Siswa" required>  
 					</div>
 					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
 				</div>

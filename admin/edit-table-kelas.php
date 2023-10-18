@@ -7,9 +7,8 @@ if (isset($_POST['simpan'])) {
 	$nama_kelas = $_POST['nama_kelas'];
 	$tingkat = $_POST['tingkat'];
 	$wali_kelas = $_POST['wali_kelas'];
-	$jumlah_siswa = $_POST['jumlah_siswa'];
 
-	$simpan_data_kelas = mysqli_query($conn,"UPDATE tabel_kelas SET nomor_kelas='$nomor_kelas',nama_kelas='$nama_kelas',tingkat='$tingkat',wali_kelas='$wali_kelas',jumlah_siswa='$jumlah_siswa' WHERE id_kelas='$id_kelas'");
+	$simpan_data_kelas = mysqli_query($conn,"UPDATE tabel_kelas SET nomor_kelas='$nomor_kelas',nama_kelas='$nama_kelas',tingkat='$tingkat',wali_kelas='$wali_kelas' WHERE id_kelas='$id_kelas'");
 
 	$pesan_sukses = "Data Berhasil Di Tambahkan";
 }
@@ -24,7 +23,6 @@ while ($row = mysqli_fetch_assoc($data_kelas)) {
 	$nama_kelas = $row['nama_kelas'];
 	$tingkat = $row['tingkat'];
 	$wali_kelas = $row['wali_kelas'];
-	$jumlah_siswa = $row['jumlah_siswa'];
 }
 ?>
 
@@ -32,7 +30,7 @@ while ($row = mysqli_fetch_assoc($data_kelas)) {
 
 	<form action="" method="post">
 		<div class="container bg-white mt-2 p-3">
-			<h3 class="text-center">From Tambah Data Kelas</h3>
+			<h3 class="text-center">From Edit Data Kelas</h3>
 			<a class="btn btn-primary" href="table-siswa.php">Kembali</a>
 			<?php if (isset($pesan_sukses)): ?>
 				<div class="alert alert-success w-25" role="alert">
@@ -56,10 +54,6 @@ while ($row = mysqli_fetch_assoc($data_kelas)) {
 					<div class="mb-3">
 						<label for="formGroupExampleInput" class="form-label">Wali kelas</label>
 						<input type="text" class="form-control form-control-sm " name="wali_kelas" id="formGroupExampleInput"  value="<?php echo $wali_kelas; ?>" required>  
-					</div>
-					<div class="mb-3">
-						<label for="formGroupExampleInput" class="form-label">Jumlah Siswa	</label>
-						<input type="text" class="form-control form-control-sm " name="jumlah_siswa" id="formGroupExampleInput" value="<?php echo $jumlah_siswa; ?>" required>  
 					</div>
 					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
 				</div>

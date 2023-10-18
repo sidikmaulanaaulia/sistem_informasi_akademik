@@ -15,7 +15,7 @@ if (isset($_SESSION['pesan_sukses'])) {
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-center">TABLE KELAS</h5>
-      <a class="btn btn-primary text-white" href="tambah-table-kelas.php?>">Tambah</a>
+      <a class="btn btn-primary text-white" href="tambah-table-kelas.php">Tambah</a>
       <?php if (isset($pesan_sukses)): ?>
         <div class="alert alert-success w-25 mt-3" role="alert">
           <?php echo $pesan_sukses; ?>
@@ -24,7 +24,7 @@ if (isset($_SESSION['pesan_sukses'])) {
       <div class="table-responsive mt-3">
         <table
         id="zero_config"
-        class="table table-striped table-bordered"
+        class="table table-striped table-bordered "
         >
         <thead>
           <tr>
@@ -46,10 +46,17 @@ if (isset($_SESSION['pesan_sukses'])) {
             <td><?php echo $row['nomor_kelas']; ?></td>
             <td><?php echo $row['nama_kelas']; ?></td>
             <td><?php echo $row['tingkat']; ?></td>
-            <td><?php echo $row['wali_kelas']; ?></td>
+            <td><?php echo $row['wali_kelas']; ?></td> 
+            <?php
+            $sql ="SELECT COUNT(*) AS total_siswa FROM tabel_siswa WHERE id_kelas = '$row[id_kelas]'";
+            $result = mysqli_query($conn,$sql); 
+             list($total_siswa) = mysqli_fetch_array($result);
+            ?> 
             <td class="d-flex gap-4">
-              <a href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>"><?php echo $row['jumlah_siswa']; ?></a>
-              <a class="btn btn-primary btn-sm" href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
+              <?php echo $total_siswa; ?>
+              <?php if ($total_siswa) : ?>
+              <a class="btn btn-primary btn-sm " href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
+              <?php endif; ?>
             </td>
             <td>
               <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Delete</a>
