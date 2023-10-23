@@ -51,7 +51,7 @@
                 <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="../siswa/data-buku-perpus.php"
+                  href="../siswa/ data-buku-perpus.php"
                   aria-expanded="false"
                   ><i class="mdi mdi-format-line-weight"></i
                                     ><span class="hide-menu">Perpus</span></a

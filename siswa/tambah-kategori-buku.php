@@ -17,7 +17,7 @@ if (isset($_POST['simpan'])) {
   <!-- Container fluid  -->
   <!-- ============================================================== -->
   <!-- start welcome -->  
-  <div class="fs-1">Dashboard Data Buku Perpus </div>
+  <div class="fs-1 mt-3 text-center">From Tambah Kategori Buku</div>
   <!-- end welcome -->
   <!-- satrt -->
   <!-- Button trigger modal -->

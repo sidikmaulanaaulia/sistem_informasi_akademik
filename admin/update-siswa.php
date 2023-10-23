@@ -27,7 +27,6 @@ while ($row = mysqli_fetch_assoc($data_siswa)) {
 	$nis_siswa = $row['nis_siswa'];
 	$nisn = $row['nisn'];
 	$nama_siswa = $row['nama_siswa'];
-	$kelas = $row['kelas'];
 	$alamat = $row['alamat'];
 	$tanggal_lahir = $row['tgl_lahir'];
 	$tempat_lahir = $row['tempat_lahir'];
@@ -36,6 +35,9 @@ while ($row = mysqli_fetch_assoc($data_siswa)) {
 	$nama_orang_tua = $row['nama_ortu'];
 	$tahun_masuk = $row['tahun_masuk'];
 }
+
+
+$data_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
 
 ?>
 
@@ -65,8 +67,12 @@ while ($row = mysqli_fetch_assoc($data_siswa)) {
 						<input type="text" class="form-control form-control-sm " name="nama_siswa" id="formGroupExampleInput3"   value="<?php echo $nama_siswa ?>" required>
 					</div>
 					<div class="mb-3">
-						<label for="formGroupExampleInput4" class="form-label">Kelas</label>
-						<input type="text" class="form-control form-control-sm " name="kelas" id="formGroupExampleInput4"  value="<?php echo $kelas ?>" required>
+						<label for="kelas">Kelas</label>
+						<select name="kelas" id="kelas">
+							<?php foreach ($data_kelas as $row) :?>
+								<option  value="<?php echo $row['id_kelas'] ?>"><?php echo $row['nama_kelas'] ?></option>
+							<?php endforeach; ?>
+						</select>
 					</div>
 					<div class="mb-3">
 						<label for="formGroupExampleInput5" class="form-label">Alamat</label>
