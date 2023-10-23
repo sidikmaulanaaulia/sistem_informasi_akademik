@@ -21,7 +21,7 @@
                   href="table-siswa.php"
                   aria-expanded="false"
                   ><i class="mdi mdi-account-multiple"></i
-                  ><span class="hide-menu">Data Kelas</span></a
+                  ><span class="hide-menu">Data Siswa</span></a
                 >              </li>
 
                 <?php if(($_SESSION['adminspp']) == '01' ){ ?>
@@ -51,10 +51,10 @@
                 <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="widgets.php"
+                  href="../siswa/data-buku-perpus.php"
                   aria-expanded="false"
                   ><i class="mdi mdi-format-line-weight"></i
-                                    ><span class="hide-menu">Data BK</span></a
+                                    ><span class="hide-menu">Perpus</span></a
                 >              </li>
                   <?php } ?>
 

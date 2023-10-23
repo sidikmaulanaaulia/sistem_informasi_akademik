@@ -7,7 +7,6 @@ $id_siswa = $_GET['id'];
 $siswa = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM tabel_siswa WHERE id='$id_siswa'"));
 $nama_siswa = $siswa['nama_siswa']; 
 $nis_siswa = $siswa['nis_siswa']; 
-$kelas = $siswa['kelas']; 
 $thn_masuk = $siswa['tahun_masuk'];
 
 
@@ -27,11 +26,11 @@ if (isset($_POST['simpan'])) {
 
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
-<div class="page-wrapper">
+<div class="page-wrapper bg-white">
   <!-- Container fluid  -->
   <!-- ============================================================== -->
   <!-- start welcome -->
-  <div class="fs-1">Dashboard Data Perpus <?php echo $nama_siswa; ?> <?php echo $kelas; ?></div>
+  <div class="fs-1 mt-3">Dashboard Data Perpus <?php echo $nama_siswa; ?></div>
   <!-- end welcome -->
   <!-- Tabs -->
   <div class="card mt-3">

@@ -55,7 +55,14 @@ if (isset($_SESSION['pesan_sukses'])) {
               <td><?php echo $siswa['nis_siswa'] ?></td>
               <td><?php echo $siswa['nisn'] ?></td>
               <td><a href="../siswa/detail-siswa.php?id=<?php echo $siswa['id'] ?>"><?php echo $siswa['nama_siswa'] ?></a></td>
-              <td><a href="table-kelas.php=<?php echo $siswa['kelas'] ?>"><?php echo $siswa['kelas'] ?></a></td>
+                <?php $data_kelas = mysqli_query($conn,"SELECT nama_kelas,id_kelas FROM tabel_kelas WHERE id_kelas = '$siswa[id_kelas]'");
+                list($nama_kelas,$id_kelas) = mysqli_fetch_array($data_kelas);
+                 ?>
+              <td>
+                <a class="text-decoration-none" href="table-detail-kelas.php?id=<?php echo $id_kelas ?>">
+                <?php echo $nama_kelas ?>
+                </a>
+              </td>
               <td><?php echo $siswa['alamat'] ?></td>
               <td><?php echo $siswa['tgl_lahir'] ?></td>
               <td><?php echo $siswa['tempat_lahir'] ?></td>
@@ -63,8 +70,8 @@ if (isset($_SESSION['pesan_sukses'])) {
               <td><?php echo $siswa['jarak_tempuh'] ?></td>
               <td><?php echo $siswa['nama_ortu'] ?></td>
               <td >
-                <a class="btn btn-success btn-sm text-white" href="update-siswa.php?id=<?php echo $siswa['id'] ?>">Update</a>
-                <a class="btn btn-danger btn-sm mt-2" href="delete-siswa.php?id=<?php echo $siswa['id'] ?>">Delete</a>
+                <a class="btn btn-success btn-sm text-white" href="update-siswa.php?id=<?php echo $siswa['id'] ?>">Edit</a>
+                <a class="btn btn-danger btn-sm mt-2" href="delete-siswa.php?id=<?php echo $siswa['id'] ?>">Hapus</a>
               </td>
             </tr>
             

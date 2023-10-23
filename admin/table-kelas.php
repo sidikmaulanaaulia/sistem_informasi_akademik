@@ -59,8 +59,8 @@ if (isset($_SESSION['pesan_sukses'])) {
               <?php endif; ?>
             </td>
             <td>
-              <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Delete</a>
-              <a class="btn btn-success btn-sm text-white" href="edit-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Update</a>
+              <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Hapus</a>
+              <a class="btn btn-success btn-sm text-white" href="edit-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Edit</a>
             </td>
           </tr>
           <?php $no++; ?>

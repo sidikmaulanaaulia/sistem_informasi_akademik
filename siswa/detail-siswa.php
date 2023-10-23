@@ -6,7 +6,6 @@ $id = $_GET['id'];
 
 $siswa = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tabel_siswa WHERE id='$id'"));
 $id_siswa = $siswa['id'];
-$kelas = $siswa['kelas'];
 $nis_siswa = $siswa['nis_siswa'];
 $nama_siswa = $siswa['nama_siswa'];
 $thn_masuk = $siswa['tahun_masuk'];
@@ -16,27 +15,10 @@ $thn_masuk = $siswa['tahun_masuk'];
 
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
-<div class="page-wrapper">
+<div class="page-wrapper bg-white">
   <!-- ============================================================== -->
   <!-- Bread crumb and right sidebar toggle -->
   <!-- ============================================================== -->
-  <div class="page-breadcrumb">
-    <div class="row">
-      <div class="col-12 d-flex no-block align-items-center">
-        <h4 class="page-title">Widgets</h4>
-        <div class="ms-auto text-end">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Library
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- ============================================================== -->
   <!-- End Bread crumb and right sidebar toggle -->
   <!-- ============================================================== -->
@@ -44,11 +26,11 @@ $thn_masuk = $siswa['tahun_masuk'];
   <!-- Container fluid  -->
   <!-- ============================================================== -->
   <!-- start welcome -->
-    <div class="fs-1">Dashboard Data Pembayaran <?php echo $nama_siswa ?> <?php echo $kelas; ?></div>
+    <div class="fs-1 mt-3">Dashboard Data Pembayaran <?php echo $nama_siswa ?></div>
   <!-- end welcome -->
   
   <!-- Tabs -->
-  <div class="card">
+  <div class="card mt-3">
     <!-- Nav tabs -->
     <div class="nav nav-tabs " id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tahun I</button>
