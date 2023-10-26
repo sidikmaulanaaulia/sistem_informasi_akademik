@@ -29,6 +29,23 @@ $nama = $_SESSION['nama'];
     <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet"/>
     <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet" />
     <link href="dist/css/style.min.css" rel="stylesheet" />
+        <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon.png"
+    />
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/extra-libs/multicheck/multicheck.css"
+    />
+    <link
+      href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
+      rel="stylesheet"
+    />
+    <link href="../dist/css/style.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
