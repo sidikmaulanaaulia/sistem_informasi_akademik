@@ -2,8 +2,7 @@
 include 'kepala.php'; 
 
 if (isset($_POST['simpan'])) {
-	$nis_siswa = $_POST['nis_siswa']; 
-	$nisn = $_POST['nisn']; 
+	$nis_siswa = mt_rand(100000, 999999);
 	$nama_siswa = $_POST['nama_siswa']; 
 	$kelas = $_POST['kelas']; 
 	$alamat = $_POST['alamat']; 
@@ -15,7 +14,7 @@ if (isset($_POST['simpan'])) {
 	$tahun_masuk = $_POST['tahun_masuk']; 
 
 	$data_siswa = mysqli_query($conn,"INSERT INTO tabel_siswa
-		(nis_siswa,nisn,nama_siswa,id_kelas,alamat,tgl_lahir,tempat_lahir,agama,jarak_tempuh,nama_ortu,tahun_masuk) VALUES ('$nis_siswa','$nisn','$nama_siswa','$kelas','$alamat','$tanggal_lahir','$tempat_lahir','$agama','$jarak_tempuh','$nama_orang_tua','$tahun_masuk')
+		(nis_siswa,nama_siswa,id_kelas,alamat,tgl_lahir,tempat_lahir,agama,jarak_tempuh,nama_ortu,tahun_masuk) VALUES ('$nis_siswa','$nama_siswa','$kelas','$alamat','$tanggal_lahir','$tempat_lahir','$agama','$jarak_tempuh','$nama_orang_tua','$tahun_masuk')
 		");
 
 	$pesan_sukses= "Tambah Data Berhasil";
@@ -30,30 +29,26 @@ $data_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
 
 	<form action="" method="post">
 		<div class="container bg-white mt-2 p-3">
-			<h3 class="text-center">Form Tambah Data Siswa</h3>
+			<h3 class="text-center">From Tambah Data Siswa</h3>
 			<a class="btn btn-primary" href="table-siswa.php">Kembali</a>
 			<?php if (isset($pesan_sukses)): ?>
-				<div class="alert alert-success w-25 mt-3" role="alert">
-					<?php echo $pesan_sukses; ?>
-				</div>
+				<script>
+					Swal.fire({
+						text: "<?php echo $pesan_sukses; ?>",
+						icon: "success"
+					});
+				</script>
 			<?php endif ?>
 			<div class="row p-4 border rounded-5">
 				<div class="col-6">
-					<div class="mb-3">
-						<label for="formGroupExampleInput" class="form-label">Nis Siswa</label>
-						<input type="text" class="form-control form-control-sm " name="nis_siswa" id="formGroupExampleInput" placeholder="Nis Siswa" required>  
-					</div>
-					<div class="mb-3">
-						<label for="formGroupExampleInput2" class="form-label">Nis</label>
-						<input type="text" class="form-control form-control-sm " name="nisn" id="formGroupExampleInput2" placeholder="Nisn" required>
-					</div>
 					<div class="mb-3">
 						<label for="formGroupExampleInput3" class="form-label">Nama Siswa</label>
 						<input type="text" class="form-control form-control-sm " name="nama_siswa" id="formGroupExampleInput3" placeholder="Nama Siswa" required>
 					</div>
 					<div class="mb-3">
 						<label for="kategori">Kelas</label>
-						<select name="kelas" id="kategori">
+						<select name="kelas" id="kategori" class="form-control w-25" required>
+							<option disabled selected>Pilih Kelas</option>
 							<?php foreach ($data_kelas as $row) :?>
 								<option  value="<?php echo $row['id_kelas'] ?>"><?php echo $row['nama_kelas'] ?></option>
 							<?php endforeach; ?>
@@ -71,7 +66,7 @@ $data_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
 				<div class="col-6">
 					<div class="mb-3">
 						<label for="formGroupExampleInput6" class="form-label">Tempat Lahir</label>
-						<input type="text" class="form-control form-control-sm " name="tempat_lahir" id="formGroupExampleInput6" placeholder="tempat_lahir" required>
+						<input type="text" class="form-control form-control-sm " name="tempat_lahir" id="formGroupExampleInput6" placeholder="Tempat Lahir" required>
 					</div>
 					<div class="mb-3">
 						<label for="formGroupExampleInput6" class="form-label">Agama</label>
@@ -120,6 +115,6 @@ $data_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
        *       Basic Table                   *
        ****************************************/
        $("#zero_config").DataTable();
- </script>
+   </script>
 </body>
 </html>

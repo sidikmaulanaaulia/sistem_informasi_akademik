@@ -2,13 +2,13 @@
 include 'kepala.php'; 
 
 if (isset($_POST['simpan'])) {
-	$nomor_kelas = $_POST['nomor_kelas'];
+	$kodeKelas = "KLS-".mt_rand(1000, 9999);
 	$nama_kelas = $_POST['nama_kelas'];
 	$tingkat = $_POST['tingkat'];
-	$wali_kelas = $_POST['wali_kelas'];
+	$nig_guru = $_POST['nig_guru'];
 
-	$simpan_data_kelas = mysqli_query($conn,"INSERT INTO tabel_kelas (nomor_kelas,nama_kelas,tingkat,wali_kelas)
-		VALUES('$nomor_kelas','$nama_kelas','$tingkat','$wali_kelas')");
+	$simpan_data_kelas = mysqli_query($conn,"INSERT INTO tabel_kelas (kode_kelas,nama_kelas,tingkat,nig_guru)
+		VALUES('$kodeKelas','$nama_kelas','$tingkat','$nig_guru')");
 
 	$pesan_sukses = "Data Berhasil Di Tambahkan";
 }
@@ -22,16 +22,15 @@ if (isset($_POST['simpan'])) {
 			<h3 class="text-center">From Tambah Data Kelas</h3>
 			<a class="btn btn-primary" href="table-kelas.php">Kembali</a>
 			<?php if (isset($pesan_sukses)): ?>
-				<div class="alert alert-success w-25 mt-3" role="alert">
-					<?php echo $pesan_sukses; ?>
-				</div>
+				<script>
+					Swal.fire({
+						text: "<?php echo $pesan_sukses; ?>",
+						icon: "success"
+					});
+				</script>
 			<?php endif ?>
 			<div class="row p-4 border rounded-5">
 				<div class="col-6">
-					<div class="mb-3">
-						<label for="formGroupExampleInput" class="form-label">Nomor kelas</label>
-						<input type="text" class="form-control form-control-sm " name="nomor_kelas" id="formGroupExampleInput" placeholder="Nomor Kelas" required>  
-					</div>
 					<div class="mb-3">
 						<label for="formGroupExampleInput" class="form-label">Nama Kelas</label>
 						<input type="text" class="form-control form-control-sm " name="nama_kelas" id="formGroupExampleInput" placeholder="Nama Kelas" required>  
@@ -41,8 +40,14 @@ if (isset($_POST['simpan'])) {
 						<input type="text" class="form-control form-control-sm " name="tingkat" id="formGroupExampleInput" placeholder="Tingkat" required>  
 					</div>
 					<div class="mb-3">
-						<label for="formGroupExampleInput" class="form-label">Wali kelas</label>
-						<input type="text" class="form-control form-control-sm " name="wali_kelas" id="formGroupExampleInput" placeholder="Wali Kelas" required>  
+						<?php $data_guru = mysqli_query($conn, "SELECT nig_guru, nama_guru FROM tabel_guru"); ?>
+						<label for="nig_guru" class="form-label">Wali kelas</label>
+						<select name="nig_guru" id="nig_guru" class="form-control w-25" required>
+							<option disabled selected>Pilih Wali Kelas</option>
+							<?php foreach ($data_guru as $data) : ?>
+								<option value="<?php echo $data['nig_guru']; ?>"><?php echo $data['nama_guru']; ?></option>
+							<?php endforeach; ?>
+						</select>
 					</div>
 					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
 				</div>

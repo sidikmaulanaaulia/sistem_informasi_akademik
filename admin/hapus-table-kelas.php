@@ -1,8 +1,7 @@
 <?php
 session_start(); 
 include 'koneksi.php';
-
-$id_kelas = $_GET['id'];
+$id_kelas = base64_decode($_GET['id']);
 $hapus_data_kelas = mysqli_query($conn,"DELETE FROM tabel_kelas WHERE id_kelas='$id_kelas'");
 
 header("location:table-kelas.php");

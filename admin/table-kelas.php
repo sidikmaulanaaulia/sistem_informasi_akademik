@@ -1,12 +1,13 @@
 <?php
 include 'kepala.php'; 
-
-$table_kelas = query("SELECT * FROM tabel_kelas");
+$table_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
 
 if (isset($_SESSION['pesan_sukses'])) {
   $pesan_sukses = $_SESSION['pesan_sukses'];
   unset($_SESSION['pesan_sukses']);
 }
+
+
 ?>
 <div class="page-wrapper">
   <!-- ============================================================== -->
@@ -14,12 +15,19 @@ if (isset($_SESSION['pesan_sukses'])) {
   <!-- ============================================================== -->
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title text-center">TABLE KELAS</h5>
-      <a class="btn btn-primary text-white" href="tambah-table-kelas.php">Tambah</a>
+      <h3 class="text-center">Data Kelas</h3>
+      <?php if ($_SESSION['posisi'] == 'admin'): ?>
+        <a class="btn btn-primary text-white" href="tambah-table-kelas.php"><span class="material-icons">
+          playlist_add
+        </span></a>
+      <?php endif ?>
       <?php if (isset($pesan_sukses)): ?>
-        <div class="alert alert-success w-25 mt-3" role="alert">
-          <?php echo $pesan_sukses; ?>
-        </div>
+         <script>
+          Swal.fire({
+            text: "<?php echo $pesan_sukses; ?>",
+            icon: "success"
+          });
+        </script>
       <?php endif ?>
       <div class="table-responsive mt-3">
         <table
@@ -34,8 +42,9 @@ if (isset($_SESSION['pesan_sukses'])) {
             <th>Tingkat</th>
             <th>Wali Kelas</th>
             <th>Jumlah Siswa</th>
-            <th>Action</th>
-            
+            <?php if ($_SESSION['posisi'] == 'admin'): ?>
+              <th>Action</th>
+            <?php endif ?>
           </tr>
         </thead>
         <tbody>
@@ -43,25 +52,34 @@ if (isset($_SESSION['pesan_sukses'])) {
          <?php foreach ($table_kelas as $row) : ?>
           <tr>
             <td><?php echo $no; ?></td>
-            <td><?php echo $row['nomor_kelas']; ?></td>
+            <td><?php echo $row['kode_kelas']; ?></td>
             <td><?php echo $row['nama_kelas']; ?></td>
             <td><?php echo $row['tingkat']; ?></td>
-            <td><?php echo $row['wali_kelas']; ?></td> 
+            <?php $data_guru = mysqli_query($conn,"SELECT nama_guru FROM tabel_guru WHERE nig_guru='$row[nig_guru]'");
+            list($nama_guru) = mysqli_fetch_array($data_guru);
+            ?>
+            <td><?php echo $nama_guru; ?></td>
             <?php
             $sql ="SELECT COUNT(*) AS total_siswa FROM tabel_siswa WHERE id_kelas = '$row[id_kelas]'";
             $result = mysqli_query($conn,$sql); 
-             list($total_siswa) = mysqli_fetch_array($result);
+            list($total_siswa) = mysqli_fetch_array($result);
             ?> 
-            <td class="d-flex gap-4">
-              <?php echo $total_siswa; ?>
-              <?php if ($total_siswa) : ?>
-              <a class="btn btn-primary btn-sm " href="table-detail-kelas.php?id=<?php echo $row['id_kelas'] ?>">Lihat</a>
-              <?php endif; ?>
-            </td>
             <td>
-              <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Hapus</a>
-              <a class="btn btn-success btn-sm text-white" href="edit-table-kelas.php?id=<?php echo $row['id_kelas'] ?>">Edit</a>
+              <a class="text-decoration-none" href="table-detail-kelas.php?id=<?php echo  base64_encode($row['id_kelas']); ?>
+              "><?php echo $total_siswa; ?></a>
             </td>
+            <?php if ($_SESSION['posisi'] == 'admin'): ?>
+              <td>
+                <a class="btn btn-danger btn-sm" href="hapus-table-kelas.php?id=<?php echo  base64_encode($row['id_kelas']); ?>
+                "><span class="material-icons">
+                    delete
+                  </span></a>
+                <a class="btn btn-success btn-sm text-white" href="edit-table-kelas.php?id=<?php echo  base64_encode($row['id_kelas']); ?>
+                "><span class="material-icons">
+                    edit
+                  </span></a>
+              </td>
+            <?php endif ?>
           </tr>
           <?php $no++; ?>
         <?php endforeach; ?>   

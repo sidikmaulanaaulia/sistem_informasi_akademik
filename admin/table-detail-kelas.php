@@ -1,9 +1,11 @@
 <?php
-include 'kepala.php'; 
-$id_kelas = $_GET['id'];
+include 'kepala.php';
+
+$id_kelas = base64_decode($_GET['id']);
 
 $data_kelas =mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM tabel_kelas WHERE id_kelas='$id_kelas'"));
-$data_siswa = mysqli_query($conn,"SELECT nama_siswa,nisn FROM tabel_siswa WHERE id_kelas='$id_kelas'");
+$data_siswa = mysqli_query($conn,"SELECT nama_siswa,nis_siswa FROM tabel_siswa WHERE id_kelas='$id_kelas'");
+$data_guru = mysqli_fetch_array(mysqli_query($conn,"SELECT nama_guru FROM tabel_guru WHERE nig_guru='$data_kelas[nig_guru]'"));
 ?>
 <div class="page-wrapper">
   <!-- ============================================================== -->
@@ -11,8 +13,8 @@ $data_siswa = mysqli_query($conn,"SELECT nama_siswa,nisn FROM tabel_siswa WHERE 
   <!-- ============================================================== -->
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title text-center">TABLE KELAS <?php echo $data_kelas['nama_kelas']; ?><?php  ?></h5>
-      <h5 class="card-title text-center">Wali Kelas <?php echo $data_kelas['wali_kelas'];  ?></h5>
+      <div class="fs-3 text-center mt-3">Data Kelas <?php  echo $data_kelas['nama_kelas']; ?></div>
+      <h5 class="card-title text-center">Wali Kelas <?php echo $data_guru['nama_guru'];  ?></h5>
       <a class="btn btn-primary " href="table-kelas.php">Kembali</a>
       <div class="table-responsive">
         <table
@@ -31,7 +33,7 @@ $data_siswa = mysqli_query($conn,"SELECT nama_siswa,nisn FROM tabel_siswa WHERE 
           <?php foreach ($data_siswa as $row) : ?>
           <tr>
             <td><?php echo $no; ?></td>
-            <td><?php echo $row['nisn']; ?></td>
+            <td><?php echo $row['nis_siswa']; ?></td>
             <td><?php echo $row['nama_siswa']; ?></td>
             
           </tr>

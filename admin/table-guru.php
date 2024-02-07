@@ -1,14 +1,32 @@
 <?php
-include 'koneksi.php';
-$table_guru = query("SELECT * FROM tabel_guru");
+include 'kepala.php';
+if (isset($_SESSION['pesan_sukses'])) {
+  $pesan_sukses = $_SESSION['pesan_sukses'];
+  unset($_SESSION['pesan_sukses']);
+}
 ?>
+
 <div class="page-wrapper">
   <!-- ============================================================== -->
   <!-- Start Page Content -->
   <!-- ============================================================== -->
+  <!-- start table siwa -->
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title text-center">TABLE DATA GURU</h5>
+      <h3 class="text-center">Data guru</h3>
+      <?php if ($_SESSION['posisi'] == 'admin'): ?>
+        <a class="btn btn-primary w-auto" href="tambah-guru.php"><span class="material-icons">
+          playlist_add
+        </span></a>
+      <?php endif ?>
+      <?php if (isset($pesan_sukses)): ?>
+         <script>
+          Swal.fire({
+            text: "<?php echo $pesan_sukses; ?>",
+            icon: "success"
+          });
+        </script>   
+      <?php endif ?>
       <div class="table-responsive">
         <table
         id="zero_config"
@@ -17,40 +35,71 @@ $table_guru = query("SELECT * FROM tabel_guru");
         <thead>
           <tr>
             <th>No</th>
-            
-            <th>Nama</th>
+            <th>Nig</th>
+            <th>Nama Guru</th>
+            <th>Alamata</th>
             <th>Tanggal Lahir</th>
             <th>Alamat</th>
-            <th>Jenis kelamin</th>
-            <th>Agama</th>
-            <th>No Hp</th>
-            <th>Pendidikan</th>
+            <th>Jenis Kelamin</th>
             <th>Guru Mata Pelajaran</th>
+            <th>Agama</th>
+            <th>Pendidikan </th>
+            <th>No Telepon</th>
+            <?php if ($_SESSION['posisi'] == 'admin'): ?>
+              <th>Aksi</th>
+            <?php endif; ?>
           </tr>
         </thead>
         <tbody>
-          <?php  $no = 1;?> 
-          <?php foreach ($table_guru as $tampil) : ?>
 
+          <?php
+          $data_guru = mysqli_query($conn,"SELECT * FROM tabel_guru"); 
+          $no =1;
+          ?>
+          <?php foreach ($data_guru as $guru) : ?>
             <tr>
-              <td><?php echo $no; ?></td>
-              <td><?php echo $tampil['nama']; ?></td>
-              <td><?php echo $tampil['tanggal_lahir']; ?></td>
-              <td><?php echo $tampil['alamat']; ?></td>
-              <td><?php echo $tampil['jenis_kelamin']; ?></td>
-              <td><?php echo $tampil['agama']; ?></td>
-              <td><?php echo $tampil['no_telepone']; ?></td>
-              <td><?php echo $tampil['pendidikan']; ?></td>
-              <td><?php echo $tampil['guru_mata_pelajaran']; ?></td>
+              <td><?php echo $no ?></td>
+              <td><?php echo $guru['nig_guru'] ?></td>
+              <td><a href="detail-guru.php?id=<?php echo  base64_encode($guru['id']); ?>"><?php echo $guru['nama_guru'] ?></a></td>
+              <td><?php echo $guru['alamat'] ?></td>
+              <td><?php echo $guru['tanggal_lahir'] ?></td>
+              <td><?php echo $guru['alamat'] ?></td>
+              <td><?php echo $guru['jenis_kelamin'] ?></td>
+              <?php $data_mapel = mysqli_query($conn,"SELECT nama_mapel FROM tb_mapel WHERE nig_guru = '$guru[nig_guru]'");
+              list($nama_mapel) = mysqli_fetch_array($data_mapel);
+              ?>
+              <td><?php echo $nama_mapel ?></td>
+              <td><?php echo $guru['agama'] ?></td>
+              <td><?php echo $guru['pendidikan'] ?></td>
+              <td><?php echo $guru['no_telepone'] ?></td>
+              <?php if ($_SESSION['posisi'] == 'admin'): ?>
+                <td>
+                  <div class="d-flex gap-2">
+                  <a class="btn btn-success btn-sm text-white" href="edit-guru.php?id=<?php echo  base64_encode($guru['id']); ?>"><span class="material-icons">
+                    edit
+                  </span></a>
+                  <a class="btn btn-danger btn-sm" href="hapus-guru.php?id=<?php echo  base64_encode($guru['id']); ?>"><span class="material-icons">
+                    delete
+                  </span></a>
+                  </div>
+                </td>
+              <?php endif; ?>
             </tr>
-            <?php $no++; ?>
-          <?php endforeach; ?>                        
+            
+            <?php
+            $no++;
+            ?> 
+            
+          <?php endforeach; ?>
+
+
+          
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<!-- akhir table guru -->
+<!-- akhir -->
 </div>
 </div>
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>

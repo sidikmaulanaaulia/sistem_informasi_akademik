@@ -2,159 +2,90 @@
 session_start();
 include 'info.php';
 if (isset($_SESSION['pesan_login'])) {
-    $pesan_login = $_SESSION['pesan_login'];
-    unset($_SESSION['pesan_login']); 
+  $pesan_login = $_SESSION['pesan_login'];
+  unset($_SESSION['pesan_login']); 
 }
 
 ?>
+
 <!doctype html>
-<html class="no-js" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo strtoupper($nama_sekolah).' '.strtoupper($kabupaten).' '.strtoupper($provinsi); ?></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-        ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <!-- Google Fonts
-        ============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/bootstrap.min.css">
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/owl.carousel.css">
-    <link rel="stylesheet" href="admin/css/owl.theme.css">
-    <link rel="stylesheet" href="admin/css/owl.transitions.css">
-    <!-- animate CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/animate.css">
-    <!-- normalize CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admincss/normalize.css">
-    <!-- main CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/main.css">
-    <!-- morrisjs CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/morrisjs/morris.css">
-    <!-- mCustomScrollbar CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <!-- metisMenu CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="admin/css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="admin/css/calendar/fullcalendar.print.min.css">
-    <!-- forms CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/form/all-type-forms.css">
-    <!-- style CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/style.css">
-    <!-- responsive CSS
-        ============================================ -->
-    <link rel="stylesheet" href="admin/css/responsive.css">
-    <!-- modernizr JS
-        ============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><?php echo strtoupper($nama_sekolah).' '.strtoupper($kabupaten).' '.strtoupper($provinsi); ?></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style type="">
+   body {
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(-45deg, green, cyan); /* Sesuaikan warna latar belakang */
+  transform-origin: 0 0;
+  transform: skewY(-17deg); /* Sesuaikan derajat miring */
+  z-index: -1;
+}
+
+  </style>
 </head>
-
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <div class="container-fluid">
-        <div class="row main" style="margin-top: 50px;">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
-            <div class="col-md-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="text-center m-b-md custom-login">
-                    <h3 class="text-primary">PLEASE LOGIN TO APP</h3>
-                </div>
-                <div>
-                    <?php if (isset($pesan_login)) : ?>
-                   <div class="alert alert-danger text-center" role="alert">
-                   <?php echo $pesan_login; ?>
-                    </div>
-                    <?php endif ?> 
-                </div>
-                <div class="hpanel">
-                    <div class="panel-body">
-                        <form action="admin/proses-login.php" method="post">
-                            <div class="form-group">
-                                <label class="control-label" for="username">Username</label>
-                                <input type="text" placeholder="username"  title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="password">Password</label>
-                                <input type="password" title="Please enter your password" placeholder="password" required="" value="" name="password" id="password" class="form-control">
-                            <div class="checkbox login-checkbox">
-                                <label>
-                                        <input type="checkbox" class="i-checks"> Remember me </label>
-                            <button class="btn btn-success btn-block loginbtn"  name="submit">Login</button>
-                            <a class="btn btn-default btn-block" href="register.php">Register</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <form action="admin/proses-login.php" method="post">
+   <div>
+    <?php if (isset($pesan_login)) : ?>
+     <div class="alert alert-danger text-center" role="alert">
+       <?php echo $pesan_login; ?>
+     </div>
+   <?php endif ?> 
+ </div>
+ <section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6 ">
+        <div class="d-flex justify-content-center"> 
+        <img src="admin/assets/images/logo-sekolah.png"
+        class="img-fluid" width="250" height="380" alt="Phone image">
         </div>
-    </div>
-<!-- end login -->
-    <!-- jquery
-        ============================================ -->
-    <script src="js/vendor/jquery-1.11.3.min.js"></script>
-    <!-- bootstrap JS
-        ============================================ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow JS
-        ============================================ -->
-    <script src="js/wow.min.js"></script>
-    <!-- price-slider JS
-        ============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-        ============================================ -->
-    <script src="js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-        ============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-        ============================================ -->
-    <script src="js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-        ============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-        ============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-        ============================================ -->
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
-    <!-- tab JS
-        ============================================ -->
-    <script src="js/tab.js"></script>
-    <!-- icheck JS
-        ============================================ -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/icheck/icheck-active.js"></script>
-    <!-- plugins JS
-        ============================================ -->
-    <script src="js/plugins.js"></script>
-    <!-- main JS
-        ============================================ -->
-    <script src="js/main.js"></script>
-</body>
+        <h1 class="text-center fw-bold">Sistem informasi Akademik </h1>
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="text" name="username" id="form1Example13" class="form-control form-control-lg" required />
+            <label class="form-label" for="form1Example13">Username </label>
+          </div>
 
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input type="password" name="password" id="form1Example23" class="form-control form-control-lg" required />
+            <label class="form-label" for="form1Example23">Password</label>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+              <label class="form-check-label" for="form1Example3"> Remember me </label>
+            </div>
+            <a href="#!">Forgot password?</a>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block" name="submit">Login</button>
+          <button  class="btn btn-outline-success btn-lg btn-block" name="submit"><a class="text-black text-decoration-none" href="register.php">Register</a></button>
+       
+      </div>
+    </div>
+  </div>
+</section>
+ </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>

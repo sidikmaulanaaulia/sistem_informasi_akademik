@@ -12,7 +12,7 @@ function redirectToHomePageWithError($message) {
 if (isset($_SESSION['username'])) {
     // Pengguna sudah masuk
     // Lakukan tindakan yang sesuai untuk pengguna
-} elseif (isset($_SESSION['username_siswa'])) {
+} elseif (isset($_SESSION['nama_siswa'])) {
     // Siswa sudah masuk
     // Lakukan tindakan yang sesuai untuk siswa
 } else {

@@ -17,22 +17,24 @@ if (isset($_POST['submit'])) {
 
    if ($result->num_rows == 1) {
       $row = mysqli_fetch_assoc($result);
-      if ($password == $row['password']) {
+      $kunci = "@43988.348";
+      $password1_input = md5($password.$kunci.$password);
+      $password2_input = md5($password1_input.$kunci.$password1_input);
+      if ($password2_input == $row['password']) {
          include 'sessions-admin.php';
          header("location:index.php");
          exit();
       }
+
    }
-
    //tabel user_siswa
-   $sql = "SELECT * FROM user_siswa WHERE username_siswa='$username'";
+   $sql = "SELECT * FROM tabel_siswa WHERE nis_siswa='$username'";
    $result = $conn->query($sql);
-
    if ($result->num_rows == 1) {
       $row = mysqli_fetch_assoc($result);
-      if ($password == $row['password_siswa']) {
+      if ($password == $row['password']) {
          include 'sessions-siswa.php';
-         header("location:index.php");
+         header("location:../siswa/index.php");
          exit();
       }
    }
