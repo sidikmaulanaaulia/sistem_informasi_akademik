@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php'; 
+include 'header.php'; 
 $table_kelas = mysqli_query($conn,"SELECT * FROM tabel_kelas");
 
 if (isset($_SESSION['pesan_sukses'])) {

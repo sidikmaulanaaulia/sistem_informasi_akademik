@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 
 if (isset($_POST['update'])) {
   $id_kategori = base64_decode($_GET['id']);

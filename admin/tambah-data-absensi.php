@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 
 if (isset($_POST['simpan'])) {
 	//batasan jadwal date_default_timezone_set('Asia/Jakarta');

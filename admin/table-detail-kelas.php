@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 
 $id_kelas = base64_decode($_GET['id']);
 

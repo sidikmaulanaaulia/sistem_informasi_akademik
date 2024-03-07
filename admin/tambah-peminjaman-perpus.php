@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 
 if (isset($_POST['simpan'])) {
   $book_id = $_POST['book_id'];

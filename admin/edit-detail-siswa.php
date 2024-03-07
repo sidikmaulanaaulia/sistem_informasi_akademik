@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php'; 
+include 'header.php'; 
 
 if (isset($_POST['simpan'])) {
 	$nis_siswa = mysqli_real_escape_string($conn,$_POST['nis_siswa']); 

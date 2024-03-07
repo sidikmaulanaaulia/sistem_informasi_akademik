@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 
 if (isset($_POST['simpan'])) {
   $nis_siswa = $_POST['nis_siswa'];

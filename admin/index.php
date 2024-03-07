@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 if (isset($_SESSION['username'])) {
   $nama = $_SESSION['username'];
 }

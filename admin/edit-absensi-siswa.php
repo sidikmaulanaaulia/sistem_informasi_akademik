@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 
 
 if (isset($_POST['simpan'])) {
@@ -86,5 +86,6 @@ while ($row = mysqli_fetch_assoc($data_absensi_guru)) {
 <script src="dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
 <script src="dist/js/custom.min.js"></script>
+
 </body>
 </html>

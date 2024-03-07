@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php'; 
+include 'header.php'; 
 $table_prestasi = query("SELECT * FROM tabel_prestasi");
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 $table_pelanggaran = query('SELECT * FROM tabel_pelanggaran');
 ?>
 <div class="page-wrapper">

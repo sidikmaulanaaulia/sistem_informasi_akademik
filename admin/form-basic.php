@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php'; ?>
+include 'header.php'; ?>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->

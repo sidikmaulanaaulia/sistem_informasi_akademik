@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 $nama_siswa = $_SESSION['nama_siswa'];
 ?>
     <!-- Page wrapper  -->

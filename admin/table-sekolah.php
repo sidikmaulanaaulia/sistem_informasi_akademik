@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php'; 
+include 'header.php'; 
 $table_sekolah = query("SELECT * FROM table_sekolah");
 ?>
 <div class="page-wrapper">

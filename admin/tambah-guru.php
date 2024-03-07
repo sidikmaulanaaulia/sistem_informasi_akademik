@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php'; 
+include 'header.php'; 
 
 if (isset($_POST['simpan'])) {
 	$nig_guru = mt_rand(100000, 999999);

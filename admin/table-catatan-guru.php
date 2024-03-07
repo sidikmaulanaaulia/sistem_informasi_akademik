@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 
 $table_catatan_guru = query("SELECT * FROM tabel_catatan_guru");
 

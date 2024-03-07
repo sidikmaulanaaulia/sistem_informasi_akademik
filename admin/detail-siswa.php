@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 $id = base64_decode($_GET['id']);
 $siswa = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tabel_siswa WHERE id='$id'"));
 $id_siswa = $siswa['id'];

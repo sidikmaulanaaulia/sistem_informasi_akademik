@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php'; 
+include 'header.php'; 
 $table_absensi_guru = query("SELECT * FROM tabel_absensi_guru");
 ?>
         <div class="page-wrapper">

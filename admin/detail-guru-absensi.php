@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 $id = base64_decode($_GET['id']);
 $data_guru = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tabel_guru WHERE id='$id'"));
 $id = $data_guru['id'];

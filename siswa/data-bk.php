@@ -1,5 +1,5 @@
 <?php 
-include 'kepala.php';
+include 'header.php';
 $id_siswa = $_SESSION['id_siswa'];
 $nis_siswa = $_SESSION['nis_siswa'];
 $thn_masuk = $_SESSION['tahun_masuk'];

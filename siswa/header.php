@@ -1,7 +1,6 @@
 <?php 
+include '../admin/sessions.php';
 include '../info.php';
-include 'sessions.php';
-$nama = $_SESSION['nama'];
  ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -46,16 +45,14 @@ $nama = $_SESSION['nama'];
       rel="stylesheet"
     />
     <link href="../dist/css/style.min.css" rel="stylesheet" />
-    <!-- fontgoogle icon -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/res
-      pond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
@@ -89,23 +86,22 @@ $nama = $_SESSION['nama'];
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index.html">
               <!-- Logo icon -->
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
-                <img
-                  src="assets/images/logo-sekolah.png"
+                 <img
+                  src="../admin/assets/images/logo-sekolah.png"
                   alt="homepage"
                   class="light-logo"
                   width="40"
-                />              </b>
+                />           </b>
               <!--End Logo icon -->
               <!-- Logo text -->
               <span class="logo-text ms-2">
-                <!-- dark Logo text -->
-                SMK PAB 5 DELI
-                 </span>
+              SMK PAB 5 DELI 
+                       </span>
               <!-- Logo icon -->
               <!-- <b class="logo-icon"> -->
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -146,6 +142,9 @@ $nama = $_SESSION['nama'];
                   data-sidebartype="mini-sidebar"
                   ><i class="mdi mdi-menu font-24"></i
                 ></a>              </li>
+              <!-- ============================================================== -->
+              <!-- Search -->
+              <!-- ============================================================== -->
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -180,16 +179,15 @@ $nama = $_SESSION['nama'];
                   aria-labelledby="navbarDropdown"
                 >
                   <a class="dropdown-item" href=""
-                    ><i class="mdi mdi-account me-1 ms-1"></i>Profile <?p$hp echo nama; ?></a
+                    ><i class="mdi mdi-account me-1 ms-1"></i>Profile</a
                   >
-                  
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href=""
                     ><i class="mdi mdi-settings me-1 ms-1"></i> Account
                     Setting</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout.php"
+                  <a class="dropdown-item" href="../admin/logout.php"
                     ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
                   >
                   <div class="dropdown-divider"></div>
@@ -209,5 +207,5 @@ $nama = $_SESSION['nama'];
         </nav>
       </header>
 <?php 
-include 'menu_samping.php';
+include 'sidebar.php';
 ?>

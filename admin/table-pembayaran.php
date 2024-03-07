@@ -1,5 +1,5 @@
 <?php
-include 'kepala.php';
+include 'header.php';
 $table_pembayaran = query('SELECT * FROM tabel_pembayaran_uang_sekolah');
 ?>
 <div class="page-wrapper">
