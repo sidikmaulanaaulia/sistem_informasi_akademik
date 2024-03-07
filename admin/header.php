@@ -180,7 +180,7 @@ $nama = $_SESSION['nama'];
                   aria-labelledby="navbarDropdown"
                 >
                   <a class="dropdown-item" href=""
-                    ><i class="mdi mdi-account me-1 ms-1"></i>Profile <?php echo nama; ?></a
+                    ><i class="mdi mdi-account me-1 ms-1"></i>Profile <?php echo $nama; ?></a
                   >
                   
                   <div class="dropdown-divider"></div>

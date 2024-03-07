@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include '../admin/koneksi.php';
+include 'koneksi.php';
 
 $id_book = base64_decode($_GET['id']);
 $delete_data = mysqli_query($conn,"DELETE FROM buku WHERE book_id='$id_book'");

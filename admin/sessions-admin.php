@@ -11,6 +11,4 @@ $_SESSION['adminbk'] = $row['adminbk'];
 $_SESSION['adminspp'] = $row['adminspp'];
 $_SESSION['adminperpus'] = $row['adminperpus'];
 $_SESSION['adminsatpam'] = $row['adminsatpam'];
-
-
 ?>
